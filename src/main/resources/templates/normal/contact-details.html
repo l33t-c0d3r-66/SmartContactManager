@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="/normal/base::layout(~{::section})">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+</head>
+<body>
+<section>
+  <div class="card mr-3 ml-3" th:if="${contact}">
+    <div class="card-body">
+      <div class="container text-center">
+        <img src="" th:src="@{'/images/'+${contact.image}}" style="width:200px; height: 200px;"  alt="Profile">
+        <h3 class="mt-3"><span th:text="${contact.name}"></span> (<span th:text="${contact.nickName}"></span>)</h3>
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">SCM<span th:text="${contact.contactId}"></span></th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="col">Email</th>
+              <td><span th:text="${contact.email}"></span></td>
+            </tr>
+            <tr>
+              <th scope="col">Phone Number</th>
+              <td><span th:text="${contact.phone}"></span></td>
+            </tr>
+            <tr>
+              <th scope="col">Work</th>
+              <td><span th:text="${contact.work}"></span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="description">
+          <th:block th:utext="${contact.description}"></th:block>
+        </div>
+        <div class="container text-center">
+          <form th:action="@{'/user/update-contact/'+${contact.contactId}}" method="post">
+            <button type="submit" class="btn btn-block btn-primary m-3">Update</button>
+          </form>
+          <button th:onclick="|deleteContact(${contact.contactId})|" class="btn btn-danger btn-block m-3">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h1 class="text-center p-3 bg-danger text-white" th:unless="${contact}">You don't have permission to access this contact...</h1>
+  <script>
+    $(document).ready(()=>{
+      $(".items").removeClass("active");
+      $("#view-link").addClass("active");
+    });
+
+  </script>
+</section>
+</body>
+</html>

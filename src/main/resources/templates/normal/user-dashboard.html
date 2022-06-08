@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="/normal/base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <section>
+       <div class="container">
+           <div class="card">
+               <div class="card-body my-5">
+                   <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert" role="alert">
+                       <p class="text-center" th:text="${session.message.content}"></p>
+                       <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+                   </div>
+                   <div class="container text-center">
+                       <img class="m-auto" src="" th:src="@{'/images/contact-logo.png'}" style="width:200px; height: 200px;"  alt="Profile">
+                   </div>
+                   <h1 class="text-center mt-3 text-secondary text-italic font-weight-light">
+                       Start Adding your Contacts to Cloud
+                   </h1>
+                   <a th:href="@{/user/add-contact}" class="btn btn-primary btn-block mt-4 text-uppercase">Add New Contact</a>
+                   <hr>
+                   <h3 class="my-3">Donate Us</h3>
+                   <input id="payment" type="text" class="form-control my-2" placeholder="Enter your amount">
+                   <div class="container text-center mt-3">
+                        <button class="btn btn-success" onclick="paymentStart()">Pay</button>
+                   </div>
+               </div>
+           </div>
+       </div>
+        <script>
+            $(document).ready(()=>{
+                $(".items").removeClass("active");
+                $("#home-link").addClass("active");
+            });
+
+        </script>
+    </section>
+</body>
+</html>

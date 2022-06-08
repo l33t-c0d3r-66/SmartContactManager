@@ -1,0 +1,138 @@
+body {
+    background: silver;
+}
+
+.bg-primary {
+    background: #0a3ce8 !important;
+}
+
+.banner-sign-up {
+    width:100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("../images/banner.png");
+    color: white;
+}
+
+.banner {
+    width:100%;
+    height: 93vh;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("../images/banner.png");
+    color: white;
+}
+
+.u-card {
+    padding: 20px;
+    background: #0e9ed5;
+
+}
+
+#login .container #login-row #login-column #login-box {
+    margin-top: 120px;
+    max-width: 700px;
+    height: 420px;
+    border: 1px solid #9C9C9C;
+    background-color: white;
+}
+#login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+    margin-top: -85px;
+}
+
+/*Side bar Style*/
+.sidebar{
+    width: 20%;
+    background: white;
+    height: 100%;
+    position: fixed;
+    padding: 45px;
+    z-index: 999999999999999;
+}
+
+.sidebar a {
+    display: block;
+    width: 100%;
+    padding: 10px 25px;
+    text-decoration: none;
+    color: grey;
+}
+
+.white-color {
+    color: white;
+}
+.sidebar hover {
+    background: #e2e2e2;
+
+}
+
+.sidebar .divider {
+    height: 5px;
+    width: 100%;
+    background: #e2e2e2;
+    margin-top: 10%;
+}
+
+.content{
+    margin-left: 20%;
+    margin-top: 20%;
+}
+
+@media only screen and (max-width: 600px){
+    .sidebar {
+        display: none;
+        width: 80% !important;
+        background: white;
+        height: 100%;
+        position: fixed;
+        padding-top: 20px;
+    }
+    .content {
+        margin-left: 0% !important;
+        margin-top: 5%;
+    }
+}
+
+.sidebar .cross-btn {
+    position: absolute;
+    top: 0;
+    right: 35px;
+    font-size: 30px;
+    text-align: right;
+    cursor: pointer;
+}
+
+.profilePic{
+    width: 35px;
+    height:35px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.search-container {
+    position: relative;
+
+}
+
+.search-result {
+    position: absolute;
+    background: white;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid gray;
+    display: none;
+}
+
+.active {
+    background: #8930d2 !important;
+    color: white !important;
+}
+
+#forgot-box {
+    margin-top: 120px;
+    max-width: 700px;
+    height: 250px;
+    border: 1px solid #9C9C9C;
+    background-color: white;
+    padding: 20px;
+}

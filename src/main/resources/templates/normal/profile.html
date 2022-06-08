@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="/normal/base::layout(~{::section})">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+</head>
+<body>
+<section>
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <div class="container text-center">
+          <img class="m-auto" src="" th:src="@{'/images/'+${user.imageUrl}}" style="width:200px; height: 200px;"  alt="Profile">
+        </div>
+        <h1 class="text-center" th:text="${user.name}"></h1>
+        <table class="table text-center">
+          <thead>
+          <tr>
+            <th scope="col">#USERID</th>
+            <th scope="col">SCM<span th:text="${user.userId}"></span></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="col">Email</th>
+            <td><span th:text="${user.email}"></span></td>
+          </tr>
+          <tr>
+            <th scope="col">Role</th>
+            <td><span th:text="${user.role}"></span></td>
+          </tr>
+          <tr>
+            <th scope="col">Account Active</th>
+            <td><span th:text="${user.enabled}"></span></td>
+          </tr>
+          <tr>
+            <th scope="col">About You</th>
+            <td><span th:text="${user.about}"></span></td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="container text-center">
+          <form th:action="@{'/user/update-contact/'+${user.userId}}" method="post">
+            <button type="submit" class="btn btn-block btn-primary m-3">Update</button>
+          </form>
+          <button th:onclick="|deleteUser(${user.userId})|" class="btn btn-danger btn-block m-3">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(()=>{
+      $(".items").removeClass("active");
+      $("#profile-link").addClass("active");
+    });
+
+  </script>
+</section>
+</body>
+</html>
