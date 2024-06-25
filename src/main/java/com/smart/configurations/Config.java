@@ -45,6 +45,14 @@ public class Config extends WebSecurityConfigurerAdapter {
         .antMatchers("/user/**").hasRole("USER").antMatchers("/**").permitAll()
                 .and().formLogin().loginPage("/signin")
                 .loginProcessingUrl("/dologin").defaultSuccessUrl("/user/index")
-                .failureUrl("/login-fail").and().csrf().disable();
+                .failureHandler((request, response, exception) -> {
+                    String errorMessage="";
+                    if (exception instanceof BadCredentialsException) {
+                        errorMessage = "Invalid username or password.";
+                    }
+                    request.getSession().setAttribute("errorMessage", errorMessage);
+                    response.sendRedirect("/login-fail");
+                })
+                .and().csrf().disable().exceptionHandling();
     }
 }
