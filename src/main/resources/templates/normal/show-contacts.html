@@ -41,7 +41,7 @@
             </td>
             <td th:text="${c.phone}"></td>
             <td class="text-center">
-              <form th:action="@{'/user/update-contact/'+${c.contactId}}" method="post">
+              <form th:action="@{'/user/update/'+${c.contactId}}" method="post">
                 <button type="submit" class="btn btn-primary">Update</button>
               </form>
               <a href="#" th:onclick="|deleteContact(${c.contactId})|" class="btn btn-danger">Delete</a>
