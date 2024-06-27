@@ -208,6 +208,21 @@ public class UserController {
         return "normal/profile";
     }
 
+    @GetMapping("/delete-user/{userId}")
+    public String deleteUser(@PathVariable("userId") Integer userId, Principal principal, HttpSession session) {
+        User user = this.userRepository.findById(userId).get();
+        String userName = principal.getName();
+        User userDetail = this.userRepository.getUserByUserName(userName);
+        if(userDetail.getUserId()==user.getUserId()) {
+        	this.userRepository.delete(user);
+        }
+        return "redirect:/signin";
+    }
+
+
+
+
+    
     @PostMapping("/{userId}/update")
     public String updateUser() {
         return "update-user";
