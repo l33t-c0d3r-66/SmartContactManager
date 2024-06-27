@@ -75,6 +75,19 @@ public class HomeController {
         }
     }
 
+
+ @RequestMapping("/login-fail")
+    public String loginFail(Model model, HttpSession session) {
+        String errorMessage = (String) session.getAttribute("errorMessage");
+        session.removeAttribute("errorMessage"); 
+        model.addAttribute("errorMessage", errorMessage);
+        return "login-fail"; 
+    }
+
+
+
+
+    
     @RequestMapping("/signin")
     public String login(Model model) {
         model.addAttribute("title","Login Page");
